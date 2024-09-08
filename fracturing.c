@@ -1,6 +1,7 @@
 //********************************************************
 // fracturing.c
 // Author: Rasheed Chenet
+// UCF ID: 5665845 
 // Class: COP 3223, Professor Parra
 // Purpose: The objective of this assignment is to familiarize myself with fracturing
 // Input: Values for points on a circle
