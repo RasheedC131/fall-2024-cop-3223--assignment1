@@ -1,7 +1,7 @@
 //********************************************************
 // fracturing.c
 // Author: Rasheed Chenet
-// UCF ID: 5665845 
+// UCF ID: 5665845
 // Class: COP 3223, Professor Parra
 // Purpose: The objective of this assignment is to familiarize myself with fracturing
 // Input: Values for points on a circle
@@ -39,12 +39,9 @@ void pointMessage(int pointNum, double x, double y)
 }
 
 
-//Calculates the distance between 2 points entered by the user
-double calculateDistance()
+//Calculates the diameter between 2 points entered by the user
+double calculateDiameter()
 {
-    //Keeps track of how many times distance has been printed
-    static int distPrint = 0;
-
     //gets points from user input
     printf("\nPlease enter your points\n");
     double x1 = enterPoint('x', 1);
@@ -57,29 +54,31 @@ double calculateDistance()
     pointMessage(1,x1,y1);
     pointMessage(2,x2,y2);
 
-    //calculates the distance
-    double distance = sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
+    //calculates the diameter
+    double diameter = sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
 
-    //Ensure distance only prints once by checking if it has been printed before
-    if (distPrint < 1)
-    {
-        //displays distance
-        printf("\nThe distance between the two points is %.3lf\n", distance);
-        distPrint += 1;
-    }
+    //Allows for diameter to be used by other functions
+    return diameter;
+}
 
-    //Allows for distance to be used by other functions
-    return distance;
+
+double calculateDistance()
+{
+    //The distance of the circle is the same as it's diameter
+    double distance = calculateDiameter();
+
+    //displays distance
+    printf("\nThe distance between the two points is %.3lf\n", distance);
 }
 
 //calculates the perimeter of a circle based on two points chosen by the user
 double calculatePerimeter()
 {
-    //runs calculateDistance to find the distance
-    double distance = calculateDistance();
+    //runs calculateDiameter to find the diameter
+    double diameter = calculateDiameter();
 
     //calculates the perimeter
-    double perimeter = distance * PI;
+    double perimeter = diameter * PI;
 
     //displays perimeter
     printf("\nThe perimeter of the city encompassed by your request is %.3lf\n", perimeter);
@@ -90,8 +89,8 @@ double calculatePerimeter()
 //calculates the area of a circle based on two points chosen by the user
 double calculateArea()
 {
-    //divides the distance(diameter) by 2 to get the radius
-    double radius = calculateDistance()/2;
+    //divides the diameter by 2 to get the radius
+    double radius = calculateDiameter()/2;
     
     //calculates the area
     double area = PI * pow(radius, 2);
@@ -105,8 +104,8 @@ double calculateArea()
 //calculates the width of a circle based on two points chosen by the user
 double calculateWidth()
 {
-    //The width of the circle is the same as it's diameter(distance)
-    double width = calculateDistance();
+    //The width of the circle is the same as it's diameter
+    double width = calculateDiameter();
 
     //displays width
     printf("\nThe width of the city encompassed by your request is %.3lf\n", width);
@@ -117,8 +116,8 @@ double calculateWidth()
 //calculates the height of a circle based on two points chosen by the user
 double calculateHeight()
 {
-    //The height of the circle is the same as it's diameter(distance)
-    double height = calculateDistance();
+    //The height of the circle is the same as it's diameter
+    double height = calculateDiameter();
 
     //displays height
     printf("\nThe height of the city encompassed by your request is %.3lf\n", height);
