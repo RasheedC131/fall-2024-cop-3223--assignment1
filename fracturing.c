@@ -61,7 +61,7 @@ double calculateDiameter()
     return diameter;
 }
 
-
+//calculates the distance of a circle based on two points chosen by the user
 double calculateDistance()
 {
     //The distance of the circle is the same as it's diameter
